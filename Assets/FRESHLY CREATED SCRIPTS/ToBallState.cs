@@ -10,12 +10,13 @@ public class ToBallState : State
     }
     public override void Exit() {
         owner.GetComponent<Arrive>().weight = 0.0f;
+        owner.GetComponent<Arrive>().targetGameObject = null;
     }
     public override void Think() {
-        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetGameObject.transform.position) <= 1f)
+        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetPosition) <= 1f)
         {
             // drop ball
-            owner.ChangeState(new WaitState());
+            owner.ChangeState(new ToPlayerState());
         }
     }
 }

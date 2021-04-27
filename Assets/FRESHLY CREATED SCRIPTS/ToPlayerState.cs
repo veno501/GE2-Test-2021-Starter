@@ -8,13 +8,15 @@ public class ToPlayerState : State
 
     public override void Enter() {
         owner.GetComponent<Arrive>().weight = 1.0f;
-        owner.GetComponent<Arrive>().targetGameObject = Player.instance.gameObject;
     }
     public override void Exit() {
         owner.GetComponent<Arrive>().weight = 0.0f;
     }
     public override void Think() {
-        if (Vector3.Distance(owner.transform.position, Player.instance.transform.position) <= 1f)
+        owner.GetComponent<Arrive>().targetPosition = Player.instance.transform.position
+            + Player.instance.transform.forward * 10f;
+
+        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetPosition) <= 1f)
         {
             // drop ball
             owner.ChangeState(new WaitState());
