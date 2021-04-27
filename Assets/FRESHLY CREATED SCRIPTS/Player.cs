@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public GameObject ball;
     public static Player instance;
 
-    void Awake()
+    void Start()
     {
         instance = this;
     }
@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
             GameObject ob = Instantiate(ball, transform.position + transform.forward, Quaternion.identity);
             ob.transform.forward = transform.forward;
             ob.GetComponent<Rigidbody>().AddForce(transform.forward * throwStrength, ForceMode.Impulse);
-            canThrow = false;
             mostInterestingBallThrown = ob;
         }
     }

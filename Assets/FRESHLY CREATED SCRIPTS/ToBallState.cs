@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class ToBallState : State
 {
-    public void Enter() {
+    public override void Enter() {
         owner.GetComponent<Arrive>().weight = 1.0f;
         owner.GetComponent<Arrive>().targetGameObject = Player.instance.mostInterestingBallThrown;
     }
-    public void Exit() {
+    public override void Exit() {
         owner.GetComponent<Arrive>().weight = 0.0f;
+        owner.GetComponent<Dog>().ball = Player.instance.mostInterestingBallThrown;
+        owner.GetComponent<Arrive>().targetGameObject = null;
+
     }
-    public void Think() {
-        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetGameObject.transform.position) <= 10f)
+    public override void Think() {
+        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetPosition) <= 1f)
         {
             // drop ball
-            owner.ChangeState(new WaitState());
+            owner.ChangeState(new ToPlayerState());
         }
     }
 }

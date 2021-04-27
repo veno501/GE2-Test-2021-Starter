@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class WaitState : State
 {
-    public void Enter() {
+    public override void Enter() {
         Player.instance.mostInterestingBallThrown = null;
+        Player.instance.canThrow = true;
     }
-    public void Exit() {
-
+    public override void Exit() {
+        Player.instance.canThrow = false;
     }
-    public void Think() {
+    public override void Think() {
         if (Player.instance.mostInterestingBallThrown != null)
         {
             // drop ball
