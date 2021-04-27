@@ -5,6 +5,8 @@ using UnityEngine;
 public class Dog : MonoBehaviour
 {
     StateMachine stateMachine;
+    [HideInInspector]
+    public GameObject ball;
     void Start()
     {
         stateMachine = GetComponent<StateMachine>();

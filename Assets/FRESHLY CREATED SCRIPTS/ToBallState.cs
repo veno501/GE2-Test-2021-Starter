@@ -10,7 +10,9 @@ public class ToBallState : State
     }
     public override void Exit() {
         owner.GetComponent<Arrive>().weight = 0.0f;
+        owner.GetComponent<Dog>().ball = Player.instance.mostInterestingBallThrown;
         owner.GetComponent<Arrive>().targetGameObject = null;
+
     }
     public override void Think() {
         if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetPosition) <= 1f)
