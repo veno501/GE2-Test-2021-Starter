@@ -15,7 +15,7 @@ public class ToBallState : State
 
     }
     public override void Think() {
-        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetPosition) <= 1f)
+        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetPosition) <= 3f)
         {
             // drop ball
             owner.ChangeState(new ToPlayerState());

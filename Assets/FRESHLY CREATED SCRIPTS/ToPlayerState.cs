@@ -16,7 +16,7 @@ public class ToPlayerState : State
         owner.GetComponent<Arrive>().targetPosition = Player.instance.transform.position
             + Player.instance.transform.forward * 10f;
 
-        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetPosition) <= 1f)
+        if (Vector3.Distance(owner.transform.position, owner.GetComponent<Arrive>().targetPosition) <= 3f)
         {
             // drop ball
             owner.ChangeState(new WaitState());
